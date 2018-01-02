@@ -1,6 +1,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%   
 % 8/16/2017                                    %
-% Author: Muhammad Mohebujjaman                %
+% Author: Jaman Mohebujjaman                %
 %                                              %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 clear all
@@ -27,7 +27,7 @@ load Gsnap_SV35K_r8_d16_N16_166
 
 % Calculate A and B tilde
 
-
+%Import offline matrices
 load ROMtestSV35K_N16_166  Snapshots MassROM StiffROM TriLinROM2 NLlift NLdrag vdmass vdstiff vlmass vlstiff GlobalV PhiR MassMatrix T dt nu BalanceTable nodeco GradDivMatrix elnode
 tic 
 
@@ -104,7 +104,7 @@ end
 s = diag(mySigma);
 
 
-
+%Number of singular values bigger than tol
 
 mycountforAB = 0;
 for i =1:length(s)
@@ -113,7 +113,7 @@ for i =1:length(s)
     end
 end
 
-
+%Truncated SVD algorithm
 
 ABtildeU = myU(:,1:mycountforAB);
 
@@ -132,9 +132,9 @@ end
 
 X = ABtildeV*inv(ABtildeS)*ABtildeU'*F;
 
-display('jaman')
+%check the l2 norm of the residual
 norm(F-MySystemMatrixForAB*X)
-display('jamanend')
+
 
 XA = X(1:r^2,1);
 XB = X(r^2+1:end,1);
@@ -150,6 +150,8 @@ for i = 1:r
     end
 end
 toc
+
+%save the matrices
 
 save ABtilde_N16_r8_d16_1
 
