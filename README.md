@@ -12,4 +12,4 @@ Here is the working procedure:
 3. Run createABtilde_noconstraints.m to create the matrices \tilde{A} and \tilde{B} using truncated SVD. It saves the matrices as ABtilde_N16_r8_d16_166.mat.
 4. Now we are ready to compute G-ROM and DDF-ROM solutions together using BDF2 (second-order) time-stepping methods. Run ROMDriverPlot.m. For the first time step, we use backward-Euler (first-order accurate) method. We compute lift, drag, and energy for both ROMs and plot them together with results from DNS (i.e DNS projection onto ROM which is located in DNSProjectionMatrix_r8.mat file).
 
-For any question, feel free to contact at jaman@psfc.mit.edu
+For any question, feel free to contact at mmohebuj@uab.edu
